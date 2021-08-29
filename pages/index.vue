@@ -1,19 +1,24 @@
 <template>
   <div class="w-full h-full bg-gradient-to-b from-blue-300 via-green-200 to-purple-300">
-    <header class="fixed flex items-center justify-between w-full p-2 border-b-4 border-red-200 bg-gradient-to-b from-blue-400 h-28">
+    <header class="z-20 fixed flex items-center justify-between w-full p-2 border-b-4 border-red-200 bg-gradient-to-b from-blue-400 h-28">
       <h1 class="w-full text-6xl text-center text-green-800 transition duration-500 ease-in-out cursor-pointer hover:text-white">
         WeatherApp
       </h1>
-      <Burger/>
+      <nav class="main-nav">
+        <div class="logo">
+        my.company
+        </div>
+        <Burger/>
+        </nav>
     </header>
     <Bar>
      <ul class="sidebar-panel-nav">
-       <li><a href="#home">Home</a></li>
-       <li><a href="#about">About</a></li>
-       <li><a href="#contact">Contact</a></li>
+       <li><nuxt-link to="/">Home</nuxt-link></li>
+       <li><nuxt-link to="/">About</nuxt-link></li>
+       <li><nuxt-link to="/contact">Contact</nuxt-link></li>
      </ul>
    </Bar>
-    <div class="grid h-screen grid-cols-4 pt-28 justify-items-stretch">
+    <div class="grid h-screen grid-cols-4 pt-28 justify-items-stretch z-10">
       <nav id="scrollable" class="h-full overflow-y-scroll">
       <ul class="flex-col justify-between w-full col-span-1 ">
         <div v-for="city in tab" :key="tab.indexOf(city)" class="w-full py-2">
@@ -124,6 +129,30 @@ export default {
 </script>
 
 <style>
+.logo {
+   align-self: center;
+   color: #fff;
+   font-weight: bold;
+   font-family: 'Lato'
+ }
+
+ .main-nav {
+   display: flex;
+   justify-content: space-between;
+   padding: 0.5rem 0.8rem;
+ }
+
+ ul.sidebar-panel-nav {
+   list-style-type: none;
+ }
+
+ ul.sidebar-panel-nav > li > a {
+   color: #fff;
+   text-decoration: none;
+   font-size: 1.5rem;
+   display: block;
+   padding-bottom: 0.5em;
+ }
 ::-webkit-scrollbar {display:none;}
 /* Sample `apply` at-rules with Tailwind CSS
 .container {
